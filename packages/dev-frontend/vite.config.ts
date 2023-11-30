@@ -50,6 +50,7 @@ export default defineConfig({
     dangerouslyIgnoreUnhandledErrors: true
   },
   server: {
-    cors: false
+    cors: false,
+    host: "0.0.0.0"
   }
 });
