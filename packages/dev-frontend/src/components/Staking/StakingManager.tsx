@@ -31,9 +31,6 @@ type StakeManagerAction =
   | { type: "setStake"; newValue: Decimalish };
 
 const reduce = (state: StakeManagerState, action: StakeManagerAction): StakeManagerState => {
-  // console.log(state);
-  // console.log(action);
-
   const { originalStake, editedLQTY } = state;
 
   switch (action.type) {

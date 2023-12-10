@@ -163,6 +163,8 @@ export class BlockPolledLiquityStore extends LiquityStore<BlockPolledLiquityStor
           })
     });
 
+    console.log("[BlockPolledLiquityStore][BlockPolledLiquityStore][_get][baseState]", baseState);
+
     return [
       {
         ...baseState,

@@ -11,3 +11,4 @@ export * from "./src/SendableLiquity";
 export * from "./src/PopulatableLiquity";
 export * from "./src/LiquityStore";
 export * from "./src/_CachedReadableLiquity";
+export * from "./src/LpStake";

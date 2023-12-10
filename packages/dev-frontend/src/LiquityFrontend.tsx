@@ -18,61 +18,64 @@ import { RiskyTrovesPage } from "./pages/RiskyTrovesPage";
 import { TroveViewProvider } from "./components/Trove/context/TroveViewProvider";
 import { StabilityViewProvider } from "./components/Stability/context/StabilityViewProvider";
 import { StakingViewProvider } from "./components/Staking/context/StakingViewProvider";
+import { LpStakingViewProvider } from "./components/LpStaking/context/LpStakingViewProvider";
 import "tippy.js/dist/tippy.css"; // Tooltip default style
 
 type LiquityFrontendProps = {
-    loader?: React.ReactNode;
+  loader?: React.ReactNode;
 };
 export const LiquityFrontend: React.FC<LiquityFrontendProps> = ({ loader }) => {
-    const { account, provider, liquity } = useLiquity();
+  const { account, provider, liquity } = useLiquity();
 
-    // For console tinkering ;-)
-    Object.assign(window, {
-        account,
-        provider,
-        liquity,
-        Trove,
-        Decimal,
-        Difference,
-        Wallet
-    });
+  // For console tinkering ;-)
+  Object.assign(window, {
+    account,
+    provider,
+    liquity,
+    Trove,
+    Decimal,
+    Difference,
+    Wallet
+  });
 
-    return (
-        <LiquityStoreProvider {...{ loader }} store={liquity.store}>
-            <Router>
-                <TroveViewProvider>
-                    <StabilityViewProvider>
-                        <StakingViewProvider>
-                            <Flex sx={{ flexDirection: "column", minHeight: "100%" }}>
-                                <Header>
-                                    <UserAccount />
-                                    <SystemStatsPopup />
-                                </Header>
+  return (
+    <LiquityStoreProvider {...{ loader }} store={liquity.store}>
+      <Router>
+        <TroveViewProvider>
+          <StabilityViewProvider>
+            <StakingViewProvider>
+              <LpStakingViewProvider>
+                <Flex sx={{ flexDirection: "column", minHeight: "100%" }}>
+                  <Header>
+                    <UserAccount />
+                    <SystemStatsPopup />
+                  </Header>
 
-                                <Container
-                                    variant="main"
-                                    sx={{
-                                        display: "flex",
-                                        flexGrow: 1,
-                                        flexDirection: "column",
-                                        alignItems: "center"
-                                    }}
-                                >
-                                    <Switch>
-                                        <Route path="/" exact>
-                                            <PageSwitcher />
-                                        </Route>
-                                        <Route path="/risky-troves">
-                                            <RiskyTrovesPage />
-                                        </Route>
-                                    </Switch>
-                                </Container>
-                            </Flex>
-                        </StakingViewProvider>
-                    </StabilityViewProvider>
-                </TroveViewProvider>
-            </Router>
-            <TransactionMonitor />
-        </LiquityStoreProvider>
-    );
+                  <Container
+                    variant="main"
+                    sx={{
+                      display: "flex",
+                      flexGrow: 1,
+                      flexDirection: "column",
+                      alignItems: "center"
+                    }}
+                  >
+                    <Switch>
+                      <Route path="/" exact>
+                        <PageSwitcher />
+                      </Route>
+                      <Route path="/risky-troves">
+                        <RiskyTrovesPage />
+                      </Route>
+                    </Switch>
+                  </Container>
+                </Flex>
+              </LpStakingViewProvider>
+            </StakingViewProvider>
+          </StabilityViewProvider>
+        </TroveViewProvider>
+      </Router>
+      <TransactionMonitor />
+    </LiquityStoreProvider>
+  );
 };

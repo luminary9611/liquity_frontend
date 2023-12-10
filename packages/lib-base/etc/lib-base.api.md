@@ -306,6 +306,31 @@ export interface LiquityStoreListenerParams<T = unknown> {
 export type LiquityStoreState<T = unknown> = LiquityStoreBaseState & LiquityStoreDerivedState & T;
 
 // @public
+export class LPStake {
+    // @internal
+    constructor(stakedLP?: Decimal, lqtyReward?: Decimal);
+    apply(change: LPStakeChange<Decimalish> | undefined): Decimal;
+    equals(that: LPStake): boolean;
+    // (undocumented)
+    get isEmpty(): boolean;
+    readonly lqtyReward: Decimal;
+    readonly stakedLP: Decimal;
+    // @internal (undocumented)
+    toString(): string;
+    whatChanged(thatStakedLP: Decimalish): LPStakeChange<Decimal> | undefined;
+}
+
+// @public
+export type LPStakeChange<T> = {
+    stakeLP: T;
+    unstakeLP?: undefined;
+} | {
+    stakeLP?: undefined;
+    unstakeLP: T;
+    unstakeAllLP: boolean;
+};
+
+// @public
 export class LQTYStake {
     // @internal
     constructor(stakedLQTY?: Decimal, collateralGain?: Decimal, lusdGain?: Decimal);
