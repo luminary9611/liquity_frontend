@@ -1,6 +1,6 @@
 import React from "react";
 import { createClient, WagmiConfig } from "wagmi";
-import { mainnet, goerli, localhost } from "wagmi/chains";
+import { goerli, localhost } from "wagmi/chains";
 import { ConnectKitProvider, getDefaultClient } from "connectkit";
 import { Flex, Heading, ThemeProvider, Paragraph, Link } from "theme-ui";
 
