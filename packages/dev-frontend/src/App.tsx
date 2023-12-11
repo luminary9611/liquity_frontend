@@ -74,7 +74,7 @@ const UnsupportedNetworkFallback: React.FC = () => (
     <Heading sx={{ mb: 3 }}>
       <Icon name="exclamation-triangle" /> Liquity is not supported on this network.
     </Heading>
-    Please switch to mainnet or Görli.
+    Please switch to Görli.
   </Flex>
 );
 
@@ -94,7 +94,7 @@ const App = () => {
                   ? [localhost]
                   : config.value.testnetOnly
                   ? [goerli]
-                  : [mainnet, goerli],
+                  : [goerli],
               walletConnectProjectId: config.value.walletConnectProjectId,
               infuraId: config.value.infuraApiKey,
               alchemyId: config.value.alchemyApiKey
