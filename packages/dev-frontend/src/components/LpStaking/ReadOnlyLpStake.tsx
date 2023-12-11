@@ -23,7 +23,7 @@ const select = ({
 
 export const ReadOnlyLpStake: React.FC = () => {
   const { changePending, dispatch } = useLpStakingView();
-  const { lqtyStake, totalStakedLQTY } = useLiquitySelector(select);
+  const { lqtyStake } = useLiquitySelector(select);
 
   // const poolShare = lqtyStake.stakedLQTY.mulDiv(100, totalStakedLQTY);
 

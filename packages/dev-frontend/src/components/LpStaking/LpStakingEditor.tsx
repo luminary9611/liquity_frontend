@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Heading, Box, Card, Button } from "theme-ui";
 
-import { Decimal, Decimalish, Difference, LiquityStoreState, LPStake } from "@liquity/lib-base";
+import { Decimal, Decimalish, LiquityStoreState, LPStake } from "@liquity/lib-base";
 import { useLiquitySelector } from "@liquity/lib-react";
 
 import { GT, LP } from "../../strings";
@@ -31,7 +31,7 @@ export const LpStakingEditor: React.FC<LpStakingEditorProps> = ({
   editedUniLp,
   dispatch
 }) => {
-  const { uniTokenBalance, totalStakedUniTokens } = useLiquitySelector(select);
+  const { uniTokenBalance } = useLiquitySelector(select);
   const { changePending } = useLpStakingView();
   const editingState = useState<string>();
 

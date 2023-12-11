@@ -5,7 +5,7 @@ import { Decimal, Decimalish, LiquityStoreState, LPStake, LPStakeChange } from "
 
 import { LiquityStoreUpdate, useLiquityReducer, useLiquitySelector } from "@liquity/lib-react";
 
-import { LP, GT } from "../../strings";
+import { LP } from "../../strings";
 
 import { useLpStakingView } from "./context/LpStakingViewContext";
 import { LpStakingEditor } from "./LpStakingEditor";
@@ -82,7 +82,7 @@ const LpStakingManagerActionDescription: React.FC<StakingManagerActionDescriptio
 }) => {
   const stakeUniLp = change.stakeLP?.prettify().concat(" ", LP);
   const unstakeUniLp = change.unstakeLP?.prettify().concat(" ", LP);
-  const lqtyGain = originalStake.lqtyReward.nonZero?.prettify().concat(" ", GT);
+  // const lqtyGain = originalStake.lqtyReward.nonZero?.prettify().concat(" ", GT);
 
   if (originalStake.isEmpty && stakeUniLp) {
     return (
