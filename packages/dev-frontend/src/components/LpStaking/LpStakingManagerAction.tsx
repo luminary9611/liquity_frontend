@@ -14,7 +14,6 @@ type StakingActionProps = {
 export const StakingManagerAction: React.FC<StakingActionProps> = ({
   change,
   needApproveAction,
-  needApproveActionAmount = Decimal.ZERO,
   children
 }) => {
   const { liquity } = useLiquity();
@@ -23,8 +22,10 @@ export const StakingManagerAction: React.FC<StakingActionProps> = ({
     "lpstake",
     change.stakeLP
       ? needApproveAction
-        ? liquity.send.approveUniTokens.bind(liquity.send, needApproveActionAmount)
+        ? liquity.send.approveUniTokens.bind(liquity.send, Decimal.INFINITY)
         : liquity.send.stakeUniTokens.bind(liquity.send, change.stakeLP)
+      : change.unstakeAllLP
+      ? liquity.send.exitLiquidityMining.bind(liquity.send)
       : liquity.send.unstakeUniTokens.bind(liquity.send, change.unstakeLP)
   );
 
